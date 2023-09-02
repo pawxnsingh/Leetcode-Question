@@ -9,18 +9,14 @@ public:
             int start = intervals[i][0];
             int end = intervals[i][1];
 
-            if(merged.empty())
+            if(merged.empty() || merged.back()[1] < intervals[i][0])
             {
                 merged.push_back({start,end});
             }
-            
-            else if(merged.back()[1] >= intervals[i][0])
+            // else if(merged.back()[1] >= intervals[i][0])
+            else
             {
                 merged.back()[1] = max(merged.back()[1],intervals[i][1]);
-            }
-            else if(merged.back()[1] < intervals[i][0])
-            {
-                merged.push_back({start,end});
             }
         }
         return merged;
