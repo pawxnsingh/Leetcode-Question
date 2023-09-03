@@ -11,15 +11,12 @@ public:
                 isIntervalInserted = true;
                 break;
             }
-
         }
         if(!isIntervalInserted)
         {
             intervals.push_back(newInterval);
         }
     }
-
-
 
     vector<vector<int>> insert(vector<vector<int>>& intervals, vector<int>& newInterval){
         // we can break this Question into Part 
@@ -34,13 +31,13 @@ public:
         {
             int start = intervals[i][0];
             int end = intervals[i][1];
-
-            if(answer.empty() || answer.back()[1] < intervals[i][0])
+            if(answer.empty() || answer.back()[1] < start)
             {
                 answer.push_back({start,end});
             }
-            else{
-                answer.back()[1] = max(answer.back()[1],intervals[i][1]);
+            else
+            {
+                answer.back()[1] = max(end,answer.back()[1]);
             }
         }
         return answer;
