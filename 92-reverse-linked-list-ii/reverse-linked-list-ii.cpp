@@ -13,7 +13,6 @@ public:
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         if(head -> next == NULL) return head;
 // this Question will be solved into the three phases 
-
         // this is the first Phase
         ListNode* dummy = new ListNode;
         dummy -> next = head;
@@ -23,7 +22,6 @@ public:
             lprev = curr;
             curr = curr -> next;
         }
-
         for(int i=0;i<=right-left;i++)
         {
             ListNode* track = curr -> next;
