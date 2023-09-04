@@ -42,27 +42,29 @@ public:
         return dummy -> next;
     }
 
-    // ListNode* getMid(ListNode* head)
-    // {
-    //     ListNode* slow = head;
-    //     ListNode* fast = head;
-    //     while(fast && fast->next)
-    //     {
-    //         fast = fast -> next -> next;
-    //         slow = slow -> next;
-    //     }
-    //     ListNode* ret = slow -> next;
-    //     slow -> next = nullptr;
-    //     return ret;
-    // }
-    ListNode* getMid(ListNode* head) {
-        ListNode* midPrev = nullptr;
-        while (head && head->next) {
-            midPrev = (midPrev == nullptr) ? head : midPrev->next;
-            head = head->next->next;
+    ListNode* getMid(ListNode* head)
+    {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* temp = NULL;
+
+        while(fast && fast->next)
+        {
+            temp = slow;
+            slow = slow -> next;
+            fast = fast -> next -> next;
         }
-        ListNode* mid = midPrev->next;
-        midPrev->next = nullptr;
-        return mid;
+        temp -> next = NULL;
+        return slow;
     }
+    // ListNode* getMid(ListNode* head) {
+    //     ListNode* midPrev = nullptr;
+    //     while (head && head->next) {
+    //         midPrev = (midPrev == nullptr) ? head : midPrev->next;
+    //         head = head->next->next;
+    //     }
+    //     ListNode* mid = midPrev->next;
+    //     midPrev->next = nullptr;
+    //     return mid;
+    // }
 };
