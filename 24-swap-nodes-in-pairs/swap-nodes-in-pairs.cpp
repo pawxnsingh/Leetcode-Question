@@ -12,23 +12,24 @@ class Solution {
 public:
     ListNode* swapPairs(ListNode* head) {
         if(head == NULL || head -> next == NULL) return head;
-        ListNode* dummy = new ListNode;
-        dummy -> next = head;
-        
-        ListNode* prev = dummy,*curr = head;
 
-        while(curr != NULL && curr -> next != NULL)
+        ListNode* dummy = new ListNode(-1);
+        ListNode* prev = dummy;
+
+        while(head && head -> next)
         {
-            // save part of next pair
-            ListNode* nxtpair = curr -> next -> next;
-            ListNode* second = curr -> next;
-            // reverse this pair
-            second-> next = curr;
-            curr -> next  = nxtpair;
-            prev -> next = second;
-            // update ptr
-            prev = curr;
-            curr = nxtpair;
+            // node to be reversed
+            ListNode* firstNode = head;
+            ListNode* secondNode = head -> next;
+
+            // node to be reversed
+            firstNode -> next = secondNode -> next;
+            secondNode -> next = firstNode;
+            prev -> next = secondNode;
+
+            //
+            prev = firstNode;
+            head = firstNode -> next;
         }
         return dummy->next;
     }
