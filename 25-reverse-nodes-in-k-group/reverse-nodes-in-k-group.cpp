@@ -21,7 +21,7 @@
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
-        ListNode* dummy = new ListNode();
+        ListNode* dummy = new ListNode(-1);
         dummy->next = head;
         
         ListNode* prev = dummy;
