@@ -1,13 +1,3 @@
-/*
-    Given head of linked list, reverse nodes of list k at a time
-    Ex. head = [1,2,3,4,5], k = 2 -> [2,1,4,3,5]
-
-    Maintain prev, curr, & temp pointers to reverse, count k times
-
-    Time: O(n)
-    Space: O(1)
-*/
-
 /**
  * Definition for singly-linked list.
  * struct ListNode {
@@ -22,37 +12,38 @@ class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
         ListNode* dummy = new ListNode(-1);
-        dummy->next = head;
-        
-        ListNode* prev = dummy;
-        ListNode* curr = dummy->next;
-        ListNode* temp = NULL;
-        
-        int count = k;
-        
-        while (curr != NULL) {
-            if (count > 1) {
-                temp = prev->next;
-                prev->next = curr->next;
-                curr->next = curr->next->next;
-                prev->next->next = temp;
+        dummy -> next = head;
+        ListNode* groupPrev = dummy;
 
-                count--;
-            } else {
+        while(true)
+        {
+            ListNode* kth = getKth(groupPrev,k);
+            if(kth == NULL) break;
+            groupPrev -> next = kth;
+            ListNode* groupNext = kth -> next;
+
+            ListNode*curr = head,*prev = groupNext;
+
+            while(curr != groupNext)
+            {
+                ListNode*track = curr -> next;
+                curr -> next = prev;
                 prev = curr;
-                curr = curr->next;
-                count = k;
-                
-                ListNode* end = curr;
-                for (int i = 0; i < k; i++) {
-                    if (end == NULL) {
-                        return dummy->next;
-                    }
-                    end = end->next;
-                }
-            }
+                curr = track;
+            }   
+            groupPrev = head;
+            head = groupNext;
         }
-        
-        return dummy->next;
+        return dummy -> next;
     }
+
+    ListNode* getKth(ListNode*head,int k){
+        ListNode* curr = head;
+        while(curr && k>0){
+            curr = curr -> next;
+            k--;
+        }return curr;
+    }
+
+
 };
