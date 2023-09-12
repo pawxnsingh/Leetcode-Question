@@ -29,20 +29,18 @@
 
 class Solution {
 public:
-    int height(TreeNode* root)
+    int height(TreeNode* root,int& diameter)
     {
         if(root == NULL) return 0;
-        return 1 + max(height(root->left),height(root->right));
+        int left = height(root->left,diameter);
+        int right = height(root->right,diameter);
+        diameter = max(diameter,left+right);
+        return 1 + max(left,right);
     }
 
     int diameterOfBinaryTree(TreeNode* root) {
-        if(root == NULL) return 0;
-
-        int sumFromLeftRight = height(root -> left) + height(root -> right);
-
-        int left = diameterOfBinaryTree(root -> left);
-        int right = diameterOfBinaryTree(root -> right);
-
-        return max(sumFromLeftRight,max(left,right));
+        int diameter = 0;
+        height(root,diameter);
+        return diameter;
     }
 };
