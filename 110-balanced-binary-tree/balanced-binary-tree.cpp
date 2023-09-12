@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    // this function is taking the O(N)
+    // this function is taking the O(logN)
     int depth(TreeNode* root)
     {
         if(root == NULL)
@@ -23,18 +23,22 @@ public:
     // this also takes O(N)
     bool isBalanced(TreeNode* root){
         if(root == NULL) return true;
+
         int leftHeight = depth(root-> left);
         int rightHeight = depth(root -> right);
 
         if(abs(leftHeight - rightHeight) > 1) return false;
 
-        bool leftPart = isBalanced(root->left);
-        bool rightPart = isBalanced(root -> right);
+        // bool leftPart = isBalanced(root->left);
+        // bool rightPart = isBalanced(root -> right);
 
-        if(leftPart == false || rightPart == false) return false;
+        // if(leftPart == false || rightPart == false) return false;
 
-        return true;
+        // return true;
+        return isBalanced(root->left) && isBalanced(root->right);
+        
     }   
-    // O(N) overall;
+    // O(NlogN) overall;
+    // SC :- O(N) worst case if the tree is skewed
 };
 
