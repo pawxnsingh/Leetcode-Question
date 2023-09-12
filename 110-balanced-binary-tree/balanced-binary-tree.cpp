@@ -11,6 +11,7 @@
  */
 class Solution {
 public:
+    // this function is taking the O(N)
     int depth(TreeNode* root)
     {
         if(root == NULL)
@@ -19,6 +20,7 @@ public:
         int right = depth(root -> right);
         return 1 + max(left,right);
     }
+    // this also takes O(N)
     bool isBalanced(TreeNode* root){
         if(root == NULL) return true;
         int leftHeight = depth(root-> left);
@@ -33,4 +35,6 @@ public:
 
         return true;
     }   
+    // O(N) overall;
 };
+
