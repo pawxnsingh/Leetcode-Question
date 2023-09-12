@@ -29,14 +29,8 @@ public:
 
         if(abs(leftHeight - rightHeight) > 1) return false;
 
-        // bool leftPart = isBalanced(root->left);
-        // bool rightPart = isBalanced(root -> right);
-
-        // if(leftPart == false || rightPart == false) return false;
-
-        // return true;
         return isBalanced(root->left) && isBalanced(root->right);
-        
+
     }   
     // O(NlogN) overall;
     // SC :- O(N) worst case if the tree is skewed
