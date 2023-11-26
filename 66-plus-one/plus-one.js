@@ -11,11 +11,6 @@ var plusOne = function(digits) {
         }
         digits[i] = 0;
     }
-
-    let ans = [];
-    ans.push(1);
-    for(let i=0;i<n;i++){
-        ans.push(0);
-    }
-    return ans;
+    digits.unshift(1);
+    return digits;
 };
