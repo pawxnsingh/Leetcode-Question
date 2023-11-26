@@ -1,1 +1,1 @@
-<h2>two-sum Notes</h2><hr>My javascript Solution
+<h2>two-sum Notes</h2><hr>My JavaScript Solution
