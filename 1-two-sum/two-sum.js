@@ -8,8 +8,8 @@ var twoSum = function(nums, target) {
     for(let i=0;i<nums.length-1;i++){
         for(let j=i+1;j<nums.length;j++){
             if(nums[i] + nums[j] === target){
-                ans.push(i);
-                ans.push(j);
+                // we can push two value at a single time
+                ans.push(i,j);
             }
         }
     }
