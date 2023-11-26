@@ -1,1 +1,1 @@
-<h2>two-sum Notes</h2><hr>type
+<h2>two-sum Notes</h2><hr>typescript solution
