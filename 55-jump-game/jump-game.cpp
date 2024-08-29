@@ -13,10 +13,12 @@ public:
                 return false;
             }
 
-            // how far i can go
-            if (maxIndexReached < i + nums[i]) {
-                maxIndexReached = i + nums[i];
-            }
+            // // how far i can go
+            // if (maxIndexReached < i + nums[i]) {
+            //     maxIndexReached = i + nums[i];
+            // }
+
+            maxIndexReached = max(i + nums[i],maxIndexReached);
         }
 
         return maxIndexReached >= nums.size() - 1;
